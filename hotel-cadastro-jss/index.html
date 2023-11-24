@@ -113,17 +113,14 @@
 </body>
 <script>
 
-    // Função para validar o formulário
     function validateForm() {
         var firstname = document.getElementById('firstname').value;
-        // Se o campo "firstname" estiver vazio, vai ser exibido um alerta e retornar falso.
         if (firstname == "") {
             alert("Nome não pode estar vazio");
             return false;
         }
 
         var lastname = document.getElementById('lastname').value;
-        // Se o campo "lastname" estiver vazio, vai ser exibido um alerta e retornar falso
         if (lastname == "") {
             alert("Sobrenome não pode estar vazio");
             return false;
@@ -131,38 +128,33 @@
 
 
         var email = document.getElementById('email').value;
-        // Se o campo "email" estiver vazio, vai ser exibido um alerta e retornar falso
         if (email == "") {
             alert("E-mail não pode estar vazio");
             return false;
         }
 
         var number = document.getElementById('number').value;
-        // Se o campo "number" estiver vazio, vai ser exibido um alerta e retornar falso
         if (number == "") {
             alert("Número de celular não pode estar vazio");
             return false;
         }
 
-        // Obter os valores dos campos "password" e "confirmpassword"
         var password = document.getElementById('password').value;
         var confirmPassword = document.getElementById('confirmpassword').value;
-        // Se algum dos campos de senha estiver vazio, vai ser exibido um alerta e retornar falso
+
         if (password == "" || confirmPassword == "") {
             alert("Senha não pode estar vazia");
             return false;
         }
 
-        // Se as senhas não corresponderem, vai ser exibido um alerta e retornar falso
         if (password != confirmPassword) {
             alert("As senhas não correspondem");
             return false;
         }
 
-        // Obter todos os botões de opção de gênero
         var genderInputs = document.getElementsByName('gender');
         var genderSelected = false;
-        // Verificar se algum botão de opção de gênero foi selecionado
+
         for (var i = 0; i < genderInputs.length; i++) {
             if (genderInputs[i].checked) {
                 genderSelected = true;
@@ -170,42 +162,34 @@
             }
         }
 
-        // Se nenhum botão de opção de gênero foi selecionado, vai ser exibido um alerta e retornar falso
         if (!genderSelected) {
             alert("Por favor, selecione um gênero");
             return false;
         }
 
-        // Se todas as verificações passarem, retornar verdadeiro
         return true;
     }
 
-    // Obter os campos de senha
     var passwordField = document.getElementById('password');
     var confirmPasswordField = document.getElementById('confirmpassword');
 
-    // Adicionar um ouvinte de evento 'input' aos campos de senha
     passwordField.addEventListener('input', changeColor);
     confirmPasswordField.addEventListener('input', changeColor);
 
-    // Função para alterar a cor de fundo dos campos de senha
     function changeColor() {
-        // Se as senhas corresponderem, alterar a cor de fundo para verde claro
+
         if (passwordField.value === confirmPasswordField.value) {
             passwordField.style.backgroundColor = 'lightgreen';
             confirmPasswordField.style.backgroundColor = 'lightgreen';
+            
         } else {
-            // Se as senhas não corresponderem, alterar a cor de fundo para salmão
             passwordField.style.backgroundColor = 'salmon';
             confirmPasswordField.style.backgroundColor = 'salmon';
         }
     }
 
-    // Adicionar um ouvinte de evento 'submit' ao formulário
     document.querySelector('form').addEventListener('submit', function (event) {
-        // Prevenir o envio do formulário
         event.preventDefault();
-        // Se a função validateForm retornar verdadeiro, exibir um alerta de sucesso e recarregar a página
         if (validateForm()) {
             alert("Formulário enviado com sucesso!");
             window.location.reload();
